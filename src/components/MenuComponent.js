@@ -6,6 +6,7 @@ class Menu extends Component {
         super(props);
 
         this.state = {   
+            selectedDish: null
         }
 
     }
@@ -19,7 +20,6 @@ class Menu extends Component {
                             <CardImg width="100%" object src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
-                            {/* <p>{dish.description}</p> */}
                         </CardImgOverlay>
                     </Card>
                 </div>
