@@ -4,12 +4,12 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Link } from 'react-router-dom'
 
 
-function RenderComments(comments) {
-    console.log(comments);
+function RenderComments({comments}) {
+    console.log(typeof(comments));
     const commentList = comments.map((comment) => {
         return (
-            <div key={comment.id}>
-                <div className="mt-2">
+            <div key={comment.id} className="mt-2">
+                <div>
                     <li className="mt-1">{comment.comment}</li>
                     <li> --  {comment.author}, {moment(comment.date).format("MMM Do YY")}</li>
                 </div>
@@ -18,7 +18,7 @@ function RenderComments(comments) {
     });
 
     return (
-        <div className="col-12 col-md-5 m-1">
+        <div>
             <h4>Comments</h4>
             <div className="list-unstyled">
                 {commentList}
@@ -27,7 +27,7 @@ function RenderComments(comments) {
     )
 }
 
-function RenderDish(dish) {
+function RenderDish({dish}) {
     console.log(dish);
     return (
         <Card>
@@ -56,11 +56,13 @@ const DishDetail = (props) => {
                     </div>
                 </div>
                 <div className="row">
-                    <RenderDish dish={props.dish} />
-                    {/* <div className="col-12 col-md-5 m-1">
+                    <div className="col-12 col-md-5 m-1">
+                        <RenderDish dish={props.dish} />
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        <RenderComments comments={props.comments} />
+                    </div>
 
-                    </div> */}
-                    <RenderComments comments={props.comments} />
                 </div>
             </div >
         );
